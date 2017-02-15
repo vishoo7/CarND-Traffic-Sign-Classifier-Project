@@ -142,9 +142,7 @@ The convolution layer helps because the nature of the problem is that the detail
 
 Here are five German traffic signs that I found on the web (https://s-media-cache-ak0.pinimg.com/originals/ce/55/f8/ce55f8319078dab5dbc37c51a77a837f.jpg):
 
-![alt text][image1] ![alt text][image2] ![alt text][image3] 
-![alt text][image4] ![alt text][image5] ![alt text][image6]
-![alt text][image7] ![alt text][image8] ![alt text][image9]
+![alt text][image2] ![alt text][image3] ![alt text][image4] ![alt text][image5] ![alt text][image6] ![alt text][image7] ![alt text][image8] ![alt text][image9] ![alt text][image10]
 
 The 6th image might be difficult to classify because it is somewhat blurry, and looks rather generic (in other words, has a similar shape to many other signs). The predictor classified it as "Go straight or right" (as named in the signnames.csv file).
 
