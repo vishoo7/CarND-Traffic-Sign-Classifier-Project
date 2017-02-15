@@ -20,15 +20,15 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/visualization.png "Visualization"
-[image2]: ./testimages/a.png "Traffic Sign 1"
-[image3]: ./testimages/b.png "Traffic Sign 2"
-[image4]: ./testimages/c.png "Traffic Sign 3"
-[image5]: ./testimages/d.png "Traffic Sign 4"
-[image6]: ./testimages/e.png "Traffic Sign 5"
-[image7]: ./testimages/f.png "Traffic Sign 6"
-[image8]: ./testimages/g.png "Traffic Sign 7"
-[image9]: ./testimages/h.png "Traffic Sign 8"
-[image10]: ./testimages/i.png "Traffic Sign 9"
+[image2]: ./test_images/a.png "Traffic Sign 1"
+[image3]: ./test_images/b.png "Traffic Sign 2"
+[image4]: ./test_images/c.png "Traffic Sign 3"
+[image5]: ./test_images/d.png "Traffic Sign 4"
+[image6]: ./test_images/e.png "Traffic Sign 5"
+[image7]: ./test_images/f.png "Traffic Sign 6"
+[image8]: ./test_images/g.png "Traffic Sign 7"
+[image9]: ./test_images/h.png "Traffic Sign 8"
+[image10]: ./test_images/i.png "Traffic Sign 9"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -84,13 +84,21 @@ The code for my final model is located in the "In [6] cell of the ipython notebo
 My final model consisted of the following layers:
 
 Layer 1: Convolutional. Input = 32x32x3. Output = 28x28x6 w/ RELU activation
+
 Pooling. Input = 28x28x6. Output = 14x14x6
+
 Layer 2: Convolutional. Output = 10x10x16 w/ RELU activation
+
 Pooling. Input = 10x10x16. Output = 5x5x16
+
 Flatten. Input = 5x5x16. Output = 400
+
 Layer 3: Fully Connected. Input = 400. Output = 120 w/ RELU activation and dropout
+
 Layer 4: Fully Connected. Input = 120. Output = 84 w/ RELU activation
+
 Layer 5: Fully Connected. Input = 84. Output = 43
+
 
 ####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
