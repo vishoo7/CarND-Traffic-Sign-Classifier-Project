@@ -130,11 +130,11 @@ I went through the deep neural network lessons and recalled that drop outs are a
 
 * Which parameters were tuned? How were they adjusted and why?
 
-Learning rate, drop out rate, epochs, and batch size. I was a little unsure about the ideal epoch and batch sizes. I tried to limit the epochs to a point where the learning rate wasn't moving significantly anymore. I also noticed that the batch size effected how long each epoch was take. I eventually did my processing on AWS so speed was less of a concern.
+Learning rate, drop out rate, epochs, and batch size. I was a little unsure about the ideal epoch and batch sizes. I tried to limit the epochs to a point where the learning rate wasn't moving significantly anymore. I also noticed that the batch size effected how long each epoch was take. I eventually did my processing on AWS so speed was less of a concern. I hope that more experience gives me a better intuition on these hyperparameter values. I am very curious as to what's ideal here.
 
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
-The convolution layer helps because the nature of the problem is that the details lie in smaller sections of the bigger picture. I took the original LeNet architecture and added the drop out later, which helped for overfitting (the accuracy of the validation set increased). I hope to learn about more ways to improve the solution with changes to the architecture and parameters. Additionally, adding more image training data or appropriately mangingling the images in the training set would also improve accuracy.
+The convolution layer helps because the nature of the problem is that the details lie in smaller sections of the bigger picture. So I took the original LeNet architecture and added the drop out later, which helped for overfitting (the accuracy of the validation set increased). I hope to learn about more ways to improve the solution with changes to the architecture and parameters. Additionally, adding more image training data or appropriately mangingling the images in the training set would also improve accuracy.
 
 ###Test a Model on New Images
 
