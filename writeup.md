@@ -103,25 +103,30 @@ To train the model, I used the LeNet architecture from the CNN lesson. I added m
 The code for calculating the accuracy of the model is located in the "In[11] cell of the Ipython notebook. The test accuracy is in the "In[12]" cell.
 
 My final model results were:
-* validation set accuracy vacilating around 0.92
-* test set accuracy of 0.921
+* validation set accuracy vacilating around 0.96
+* test set accuracy of 0.95
 
 I discussed some of the tweaks and their effects in the previous answer, and continue below:
 
 * What was the first architecture that was tried and why was it chosen?
+
 I used the LeNet (convolutional neural network) architecture since it was the suggested architecture for this type of classification problem. It lends itself well to the problem since the sign can be positioned in different parts and sizes of the image.
 
 * What were some problems with the initial architecture?
-The validation accuracy did not reach very high.
+
+The validation accuracy did not reach very high. The amount of time spent minimizing the cost function was very brief.
 
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+
 I went through the deep neural network lessons and recalled that drop outs are a very good solution. This helps solve the problem of overfitting. Since the validation set accuracy and the test set accuracy were high, it appears I achieved a good balance between overfitting and underfitting
 
 * Which parameters were tuned? How were they adjusted and why?
+
 Learning rate, drop out rate, epochs, and batch size. I was a little unsure about the ideal epoch and batch sizes. I tried to limit the epochs to a point where the learning rate wasn't moving significantly anymore. I also noticed that the batch size effected how long each epoch was take. I eventually did my processing on AWS so speed was less of a concern.
 
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
+The convolution layer helps because the nature of the problem is that the details lie in smaller sections of the bigger picture. I took the original LeNet architecture and added the drop out later, which helped for overfitting (the accuracy of the validation set increased). I hope to learn about more ways to improve the solution with changes to the architecture and parameters. Additionally, adding more image training data or appropriately mangingling the images in the training set would also improve accuracy.
 
 ###Test a Model on New Images
 
@@ -154,25 +159,28 @@ Here are the results of the prediction:
 | Slippery road			| Slippery Road      							|
 
 
-The model was able to correctly guess 8 of the 9 traffic signs, which gives an accuracy of 88.9%. This compares similarly to the accuracy on the test set of 92.1%
+The model was able to correctly guess 8 of the 9 traffic signs, which gives an accuracy of 88.9%. This compares similarly to the accuracy on the test set of 95%
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the "In [17]" cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+The top probabilities for each prediction are shown below:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 19.09522247      		| Turn right ahead   									| 
-| 28.18221664     			| Stop 										|
-| 98.06993866					| Wild animals crossing											|
-| 76.82702637	      		| Speed limit (60km/h)					 				|
-| Children crossing			| Children crossing      							|
-| End of No passing			| Go straight or right      							|
-| Yield			| Yield      							|
-| Priority road			| Priority road      							|
-| Slippery road			| Slippery Road      							|
+| ~100%      		| Turn right ahead   									| 
+| 99.7%     			| Stop 										|
+| ~100%					| Wild animals crossing											|
+| ~100%	      		| Speed limit (60km/h)					 				|
+| ~100%			| Children crossing      							|
+| 97.12%			| Go straight or right      							|
+| ~100%			| Yield      							|
+| 99.99%			| Priority road      							|
+| ~100%			| Slippery Road      							|
 
+The remainder of the percentages can be viewed in cell "In [17]". 
 
-For the second image ... 
+The prediction for "Go straight or right" was incorrect. That sign was actually "End of No passing". However, the second highest percentage prediction was 2.87%, which was for the correct sign.
+
+At the bottom of the TopKV2 object that's returned you can see the classifications for each image ranked descendingly in certainty. As mentioned, for the sixth image we see: [32, 41, 16, 12, 34]. This shows you the second most likely image was 41, which was the actual image.
