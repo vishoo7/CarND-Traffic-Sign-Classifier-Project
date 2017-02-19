@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.png "Visualization"
+[image1]: ./hist.png "Visualization"
 [image2]: ./test_images/a.png "Traffic Sign 1"
 [image3]: ./test_images/b.png "Traffic Sign 2"
 [image4]: ./test_images/c.png "Traffic Sign 3"
@@ -29,6 +29,7 @@ The goals / steps of this project are the following:
 [image8]: ./test_images/g.png "Traffic Sign 7"
 [image9]: ./test_images/h.png "Traffic Sign 8"
 [image10]: ./test_images/i.png "Traffic Sign 9"
+[image11]: ./architecture.png "Architecture"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -58,7 +59,7 @@ signs data set:
 
 The code for this step is contained in the "In [3]" code cell of the IPython notebook.  
 
-Here is an exploratory visualization of the data set. It is a histogram showing the count for each class.
+Here is an exploratory visualization of the data set. First, is a histogram showing the count for each class. Second, I display 10 random images
 
 ![alt text][image1]
 
@@ -66,11 +67,9 @@ Here is an exploratory visualization of the data set. It is a histogram showing 
 
 ####1. Describe how, and identify where in your code, you preprocessed the image data. What techiques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
 
-The code for this step is contained in the "In [4]" code cell of the IPython notebook.
+The code for this step is contained in the "In [4]" code cell of the IPython notebook. I normalized the input data using Contrast-limited Adaptive Histogram Equalization (CLAHE). This can help if there's a large variation in contrast among the images. In general, normalization is more necessary when we are dealing with data with vastly different scales. Here all of our pixel values are between 0-255.
 
-I normalized the input data, as there is a mathematical reason behind doing so.
-
-I skipped grayscaling because I don't think it would add any value (and it was mentioned as unnecessary by a udacity instructor) 
+I skipped grayscaling because I don't think it would add much value (and it was mentioned as unnecessary by a udacity instructor) 
 
 ####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
@@ -78,8 +77,6 @@ In cell "In [1]" I loaded the training, validation, and testing data. I did not 
 
 
 ####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
-
-The code for my final model is located in the "In [6] cell of the ipython notebook. 
 
 My final model consisted of the following layers:
 
@@ -99,16 +96,17 @@ Layer 4: Fully Connected. Input = 120. Output = 84 w/ RELU activation
 
 Layer 5: Fully Connected. Input = 84. Output = 43
 
+![alt text][image11]
 
 ####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-Cells In[5], In[8]-In[11] contain the training the model and relevant parameters. 
+Cells In[8]-In[10] contain the training model and relevant parameters. 
 
-To train the model, I used the LeNet architecture from the CNN lesson. I added more epics (to 100) and changed the batch size (to 256). I also played around with the learning rate, but in the end reducing it did not seem to change much (or anything). In cell In[6], where I defined the LeNet architecture, the drop out rate seemed to change the accurate rate significantly. In the end I went with the suggestion that between .25 and .5 is the best place to set it.
+To train the model, I used the LeNet architecture from the CNN lesson. I added more epics (to 30) and changed the batch size (to 256). I also played around with the learning rate, but in the end reducing it did not seem to change much (or anything). In cell In[6], where I defined the LeNet architecture, the drop out rate seemed to change the accurate rate significantly. In the end I went with the suggestion that between .25 and .5 is the best place to set it.
 
 ####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-The code for calculating the accuracy of the model is located in the "In[11] cell of the Ipython notebook. The test accuracy is in the "In[12]" cell.
+The code for calculating the accuracy of the model is located in the "In[10] cell of the Ipython notebook. The test accuracy is in the "In[11]" cell.
 
 My final model results were:
 * validation set accuracy vacilating around 0.96
@@ -148,7 +146,7 @@ The 6th image might be difficult to classify because it is somewhat blurry, and 
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-The code for making predictions on my final model is located in the "In[16]" cell of the Ipython notebook.
+The code for making predictions on my final model is located in the "In[29]" cell of the Ipython notebook.
 
 Here are the results of the prediction:
 
@@ -159,13 +157,13 @@ Here are the results of the prediction:
 | Wild animals crossing					| Wild animals crossing											|
 | Speed limit (60km/h)	      		| Speed limit (60km/h)					 				|
 | Children crossing			| Children crossing      							|
-| End of No passing			| Go straight or right      							|
+| End of No passing			| End of No passing      							|
 | Yield			| Yield      							|
 | Priority road			| Priority road      							|
 | Slippery road			| Slippery Road      							|
 
 
-The model was able to correctly guess 8 of the 9 traffic signs, which gives an accuracy of 88.9%. This compares similarly to the accuracy on the test set of 95%
+The model was able to correctly guess 9 of the 9 traffic signs, which gives an accuracy of 100%. This compares similarly to the accuracy on the test set of 95%
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -175,18 +173,14 @@ The top probabilities for each prediction are shown below:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| ~100%      		| Turn right ahead   									| 
-| 99.7%     			| Stop 										|
+| 30.1%      		| Turn right ahead   									| 
+| 65.9%     			| Stop 										|
 | ~100%					| Wild animals crossing											|
 | ~100%	      		| Speed limit (60km/h)					 				|
 | ~100%			| Children crossing      							|
-| 97.12%			| Go straight or right      							|
+| 60.7%			| Go straight or right      							|
 | ~100%			| Yield      							|
-| 99.99%			| Priority road      							|
-| ~100%			| Slippery Road      							|
+| 95.7%			| Priority road      							|
+| ~45%			| Slippery Road      							|
 
-The remainder of the percentages can be viewed in cell "In [17]". 
-
-The prediction for "Go straight or right" was incorrect. That sign was actually "End of No passing". However, the second highest percentage prediction was 2.87%, which was for the correct sign.
-
-At the bottom of the TopKV2 object that's returned you can see the classifications for each image ranked descendingly in certainty. As mentioned, for the sixth image we see: [32, 41, 16, 12, 34]. This shows you the second most likely image was 41, which was the actual image.
+The remainder of the percentages can be viewed in cell "In [31]". 
