@@ -4,13 +4,11 @@
 My Overview
 ---
 
-The Traffic_Sign_Classifier.ipynb contains the code and shows the results. Alternatively, you can view the Traffic_Sign_Classifier.html file.
+The`Traffic_Sign_Classifier.ipyn` contains the code and shows the results. Alternatively, you can view the `Traffic_Sign_Classifier.html` file.
 
-The writeup.md contains my analysis. I took the original writeup template provided and modified it
+The `writeup.md` contains my analysis. I took the original writeup template provided and modified it
 
-/testimages/ contains German traffic images I found on the web.
-
-The remainder of this readme is the original readme from the project I forked:
+`/testimages/` contains German traffic images I found on the web.
 
 
 Overview
